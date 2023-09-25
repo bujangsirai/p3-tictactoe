@@ -1,0 +1,76 @@
+<div>
+
+    <!-- BUTTON BACK -->
+    <div class="m-0 p-0 mt-4 ml-4">
+        <button (click)="this.gameStat.gantiMenu()" class="hover:opacity-50 m-0 p-0">
+            <img src="assets/back2.png" class="h-12 text-center m-auto" alt="Description">
+        </button>
+        <span class="text-xl p-1 m-0 text-black">back</span>
+    </div>
+
+    <!-- MASIH MAIN -->
+    <div *ngIf="this.gameStat.whoWin() == ''">
+        <!-- GILIRAN PLAYER 1 -->
+        <div *ngIf="this.gameStat.giliranP1()" class="alert alert-error w-10/12 m-auto mt-4 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="stroke-current shrink-0 w-6 h-6 p-0">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="flex align-middle">Giliran {{this.gameStat.player1()}} (<img
+                    src="{{this.gameStat.playerIcon(this.gameStat.player1())}}.png" class="h-6" alt="KOSONG">) </span>
+        </div>
+
+        <!-- GILIRAN PLAYER 2 -->
+        <div *ngIf="!this.gameStat.giliranP1()" class="alert alert-info w-10/12 m-auto mt-4 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="stroke-current shrink-0 w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            <span class="flex align-middle">Giliran {{this.gameStat.player2()}} (<img
+                    src="{{this.gameStat.playerIcon(this.gameStat.player2())}}.png" class="h-6" alt="KOSONG">) </span>
+        </div>
+    </div>
+
+    <!-- UDAH SELESAI (MENANG OR DRAW) -->
+    <div *ngIf="this.gameStat.whoWin() != ''">
+        <div class="alert alert-success w-10/12 m-auto mt-4 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                class="stroke-current shrink-0 w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+
+            <!-- MENANG -->
+            <span *ngIf="!this.gameStat.isDraw()" class="flex align-middle">{{
+                this.gameStat.whoWin()
+                }} (<img src="{{this.gameStat.playerIcon(this.gameStat.whoWin())}}.png" class="h-6" alt="KOSONG">)
+                Menang
+            </span>
+
+            <!-- DRAW -->
+            <span *ngIf="this.gameStat.isDraw()" class="flex align-middle">
+                DRAW GAME
+            </span>
+
+        </div>
+    </div>
+
+    <!-- BOARD -->
+    <app-board-main> </app-board-main>
+
+    <!-- BUAT INFO MODE DAN ROOM NYA : ONLINE  -->
+    <div class="flex justify-around mt-4">
+        <!-- 
+        <div class="alert alert-info w-5/12 text-xs m-0 p-1 pl-2">
+            <div class="m-auto text-center">Mode : {{modeName}} </div>
+        </div>
+
+        <div *ngIf="onlineGame" class="alert alert-info w-5/12 text-xs m-0 p-1 pl-2">
+            <span class="m-auto text-center">Room : MMMMMMMM</span>
+        </div> -->
+
+    </div>
+
+</div>

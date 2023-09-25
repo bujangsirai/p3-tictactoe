@@ -1,0 +1,118 @@
+<div>
+
+    <!-- JUDUL -->
+    <div class="text-center mt-5 text-2xl"> TIX TAX TOE BY UTIH </div>
+    <img src="assets/tic-tac-toe.png" class="h-24 text-center m-auto mt-10" alt="Description">
+
+    <!-- BUTTON LOCAL -->
+    <div class=" collapse bg-base-200 w-9/12 m-auto mt-12">
+        <input type="checkbox" />
+        <div class="collapse-title text-sm font-medium text-center m-0 pr-0">
+            SINGLE PLAYER
+        </div>
+
+        <div class="collapse-content text-sm font-medium">
+            <!-- FRIEND LOCALLY -->
+            <div *ngIf="!this.gameStat.modeSelected() || this.gameStat.modeNumber() == 1" class=" collapse bg-base-200">
+                <input (click)="this.gameStat.gantiModeSelected(1)" type="checkbox" />
+                <div class="collapse-title text-sm font-medium text-center m-0 pr-0">
+                    PLAY W/ FRIEND LOCALLY
+                </div>
+
+                <!-- FRIEND LOCALLY UI DETAIL -->
+                <div class="collapse-content text-sm font-medium border">
+                    <div class="flex justify-start mt-5">
+                        <span>Player X: </span>
+                        <input [formControl]="player1Name" type="text" placeholder="Type Here"
+                            class="input input-bordered input-error input-xs w-7/12 m-auto" />
+                    </div>
+
+
+                    <div class="flex justify-start mt-2">
+                        <span> Player O: </span>
+                        <input [formControl]="player2Name" type="text" placeholder="Type Here"
+                            class="input input-bordered input-info input-xs w-7/12 m-auto" />
+                    </div>
+
+                    <div class="flex justify-start mt-4">
+                        <button (click)="localStart(player1Name.value || '', player2Name.value || '')"
+                            class="btn btn-outline btn-xs btn-success"> NEXT </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- V.S AI -->
+            <div *ngIf="!this.gameStat.modeSelected() || this.gameStat.modeNumber() == 2" class=" collapse bg-base-200">
+                <input (click)="this.gameStat.gantiModeSelected(2)" type="checkbox" />
+                <div class="collapse-title text-sm font-medium text-center m-0 pr-0">
+                    PLAY AGAINST A.I (HARD)
+                </div>
+
+                <!-- V.S AI UI DETAILED -->
+                <div class="collapse-content text-sm font-medium border">
+                    <div class="flex justify-start mt-5">
+                        <span>Player : </span>
+                        <input [formControl]="playerName" type="text" placeholder="Type Here"
+                            class="input input-bordered input-error input-xs w-7/12 m-auto" />
+                    </div>
+                    <div class="flex mt-2">
+                        <span> Play As : ( </span>
+                        <label class="swap swap-flip text-9xl">
+                            <!-- this hidden checkbox controls the state -->
+                            <input checked [formControl]="whatIPlay" type="checkbox" />
+                            <span class="swap-on"> <img class="h-6" src="assets/close2.png" alt=""></span>
+                            <span class="swap-off"> <img class="h-6" src="assets/record2.png" alt=""> </span>
+                        </label>
+                        <span> ) </span>
+                    </div>
+
+                    <div class="flex justify-start mt-4">
+                        <button (click)="AIStart(playerName.value || '', whatIPlay.value ?? true)"
+                            class="btn btn-outline btn-xs btn-success"> NEXT
+                        </button>
+
+                        <!-- (click)="AIStart(player1Name.value || '', whatIPlay.value )"  -->
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- V.S AI TEMP -->
+            <!-- <button *ngIf="!this.gameStat.modeSelected() || this.gameStat.modeNumber() == 2"
+                (click)="this.gameStat.newGame(gameInitProps)" class="btn"> Play
+                Against A.I (Hard)
+            </button> -->
+
+        </div>
+    </div>
+
+    <!-- BUTTON MULTI -->
+    <div class="collapse bg-base-200 w-9/12 m-auto mt-5">
+        <!-- <button (click)="onlineMode('Online')" (click)="gantiMenu()" class="btn text-sm">Multiplayer</button> -->
+
+        <!-- DEBUGGING -->
+        <button *ngIf="!this.gameStat.modeSelected() || this.gameStat.modeNumber() == 3"
+            (click)="this.gameStat.newGame(gameInitProps)" class="btn text-sm">Multiplayer</button>
+    </div>
+
+    <!-- AKHIR KATA -->
+    <div class="text-center mt-1 text-xs"> Made in 21-09-23 @utih</div>
+
+    <!-- ALERT -->
+
+    <!-- Open the modal using ID.showModal() method -->
+    <dialog id="my_modal_1" class="modal">
+        <div class="toast toast-middle toast-center">
+            <div class="alert alert-error">
+                <span>{{pesanError}}.</span>
+                <div class="modal-action m-auto">
+                    <form method="dialog">
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </dialog>
+
+</div>

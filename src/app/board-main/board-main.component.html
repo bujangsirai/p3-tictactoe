@@ -1,0 +1,14 @@
+<!-- TIX TAX TOE BOARD TEMPLATE-->
+<div class="grid grid-cols-3 mx-auto w-64 border-black border-solid border-2">
+    <ng-container *ngFor="let row of [1,2,3]">
+        <ng-container *ngFor="let col of [1, 2, 3]">
+            <div (click)="this.gameStat.clickedKah(row,col)"
+                class="h-24 border-solid border-2 border-black text-center flex justify-center align-middle cursor-pointer">
+                <span>
+                    <img *ngIf="this.gameStat.isiBoard()[row][col] == 'X'" src="assets/close2.png" alt="">
+                    <img *ngIf="this.gameStat.isiBoard()[row][col] == 'O'" src="assets/record2.png" alt="">
+                </span>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

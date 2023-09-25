@@ -1,0 +1,17 @@
+<div class="flex justify-center font-mono">
+    <div class="artboard phone-1  bg-white">
+
+        <!-- MENU AWAL -->
+        <app-menu-awal *ngIf="!this.gameStat.mainMenu()">
+        </app-menu-awal>
+
+        <!-- MENU MAIN -->
+        <app-menu-main *ngIf="this.gameStat.mainMenu()">
+        </app-menu-main>
+
+    </div>
+</div>
+
+<div>
+
+</div>
